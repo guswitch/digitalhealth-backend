@@ -1,5 +1,23 @@
-module.exports = {
+const pupputeer = require('puppeteer');
+
+module.exports = {    
+
+    async Login(){
+
+        const broswer = await pupputeer.launch();
+        const page = await broswer.newPage();
+        await page.goto('http://177.84.109.162:800/index_br.html');
+        
+        await page.type('#user', process.env.USER_MECALOR);
+        await page.type('#pass', process.env.PASS_MECALOR);
+        await page.click('#btnEnter');
+
+        return page;
+    },
+
     async getData(page) {
+
+        await page.waitFor(5000);
 
         let data = []; 
 
@@ -47,6 +65,7 @@ module.exports = {
             ); 
                 
             return data;    
+            // return console.log(data);    
         } catch (error) {
             console.error(error);
         }

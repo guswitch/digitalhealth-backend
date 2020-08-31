@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script>
+        var socket = io('http://localhost:3000');
+        console.log(socket);
+        socket.on('updatingData',function(data){
+            document.body.innerHTML = '';
+            console.log(data);
+            document.body.innerHTML = JSON.stringify(data);  
+        });
+    </script>
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-        <script>
-            var socket = io('http://localhost:3000');
-            console.log(socket);
-            socket.on('updatedData',function(data){
-                //document.body.innerHTML = '';
-                console.log(data);
-                //document.body.innerHTML = JSON.stringify(data);  
-            });
-        </script>
+
 </body>
 </html>
