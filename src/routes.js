@@ -9,6 +9,7 @@ routes.get('/',(req,res)=>res.send('hello world'));
 routes.get('/data', (req,res) => {
     //res.sendFile(path.join(__dirname,'/app/scrapping/view.html'));
     //res.sendfile('src/app/scraping/view.html');
+    res.render('view.html')
 });
 
 routes.get('/contacts/', ContactsController.Index);
