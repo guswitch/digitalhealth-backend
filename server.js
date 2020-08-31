@@ -44,7 +44,7 @@ io.on('connection',async (socket) => {
         // socket.emit('updatingData',await scraping.getData(page))
         setInterval(async () => {
             socket.broadcast.emit('updatingData',await scraping.getData(page))
-        },500)
+        },1000)
         
 });
 

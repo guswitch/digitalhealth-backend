@@ -11,7 +11,7 @@
         console.log(socket);
         socket.on('updatingData',function(data){
             document.body.innerHTML = '';
-            console.log(data);
+            //console.log(data);
             document.body.innerHTML = JSON.stringify(data);  
         });
     </script>
