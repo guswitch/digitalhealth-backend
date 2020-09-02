@@ -32,7 +32,8 @@ io.on('connection',async (socket) => {
     console.log(`conectado ID: ${socket.id}`);
     const page = await scraping.Login();
     setInterval(async () => {
-        socket.broadcast.emit('updatingData',await scraping.getData(page))
+        socket.emit('updatingData',await scraping.getData(page))
+        // socket.broadcast.emit('updatingData',await scraping.getData(page))
     },1000);    
 });
 

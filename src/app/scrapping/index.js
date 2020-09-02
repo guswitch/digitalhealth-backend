@@ -12,12 +12,12 @@ module.exports = {
         await page.type('#pass', process.env.PASS_MECALOR);
         await page.click('#btnEnter');
 
+        await page.waitFor(5000);
+
         return page;
     },
 
     async getData(page) {
-
-        await page.waitFor(5000);
 
         let data = []; 
 
