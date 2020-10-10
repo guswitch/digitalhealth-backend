@@ -23,7 +23,7 @@ module.exports = {
         const token = await Token.create({_userId: user._id, token: Users.generateToken(user)});
 
         // return res.json({user, token: User.generateToken(user)});
-        return res.json({token: token.token});
+        return res.status(200).json({token: token.token});
     },
 
     async ReturnUserByToken(req,res){
