@@ -2,6 +2,7 @@ const pupputeer = require('puppeteer');
 
 module.exports = {    
 
+    // Executar o login na pagina
     async Login(){
 
         const broswer = await pupputeer.launch();
@@ -17,6 +18,7 @@ module.exports = {
         return page;
     },
 
+    // Executar a captura dos dados
     async getData(page) {
 
         let data = []; 

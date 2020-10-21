@@ -1,17 +1,21 @@
 const express = require('express');
-const scrapping = require('./app/scrapping');
+const AuthMiddleware = require('./app/middleware/auth');
 
 const ContactsController = require('./app/controllers/ContactsController');
 const UsersController = require('./app/controllers/UsersController');
 const SessionController = require('./app/controllers/SessionController');
 const ProblemsController = require('./app/controllers/ProblemsController');
-const PushTokenController = require('./app/controllers/PushTokenController.');
+const PushTokenController = require('./app/controllers/PushTokenController');
+const NotificationsController = require('./app/controllers/NotificationsController');
 
 const routes = express.Router();
 const path = require('path');
 
-
 routes.get('/',(req,res)=>res.send('hello world'));
+
+routes.post('/session', SessionController.Store);
+
+//routes.use(AuthMiddleware)
 
 routes.get('/data', (req,res) => {
     res.render('view.html')
@@ -40,6 +44,10 @@ routes.post('/pushtoken/create', PushTokenController.Create);
 routes.put('/pushtoken/update/:id', PushTokenController.Update);
 routes.delete('/pushtoken/delete/:id', PushTokenController.Delete);
 
-routes.post('/session', SessionController.Store);
+routes.get('/notifications/', NotificationsController.Index);
+routes.get('/notifications/:id', NotificationsController.Details);
+routes.post('/notifications/create', NotificationsController.Create);
+routes.put('/notifications/update/:id', NotificationsController.Update);
+routes.delete('/notifications/delete/:id', NotificationsController.Delete);
 
 module.exports = routes;

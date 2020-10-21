@@ -17,6 +17,11 @@ const UsersSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    urlSource: {
+        type: String,
+        required: true,
+        unique: true
+    },
     createdAt: {
         type: Date,
         default: Date.now()
