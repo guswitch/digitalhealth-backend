@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const NotificationsSchema = new mongoose.Schema({
-    _userId: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        required: true, 
-        ref: 'Users' 
-    },
     title: {
         type: String,
         required: true

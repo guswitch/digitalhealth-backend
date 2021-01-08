@@ -29,6 +29,9 @@ mongoose.connect('mongodb://localhost:27017/digital_health', { useNewUrlParser: 
 // Importando todos os models de uma só vez 
 requireDir('./src/app/models');
 
+// Usando alguns models
+const Notifications = mongoose.model('Notifications');
+
 // Importando arquivos do webscraping e método de filtragem de problemas
 const scraping = require('./src/app/scrapping');
 const { FilterProblem } = require('./src/app/notifications');
@@ -63,7 +66,9 @@ io.on('connection', async (socket) => {
         if (problem !== false && problemTriggerStatus == false) {
 
             problemTriggerStatus = true;
-            /* await Notifications.create(problem); */
+             await Notifications.create(problem);
+
+            /* socket.emit('Teste',problem); */
 
             // Emissão de notificação para a API do expo-notification
             return await Axios.post('https://exp.host/--/api/v2/push/send',
@@ -79,7 +84,7 @@ io.on('connection', async (socket) => {
                         'Content-Type': 'application/json'
                     }
                 });
-            /* return socket.emit('Teste',problem); */ 
+              
         }
 
     }, 1000);
